@@ -1,64 +1,31 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>صفحة هيلو وورلد</title>
+    <title>Bako Company ©</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
     <header class="topbar">
         <div class="container">
-            <span class="logo" data-en="Bako Company" data-ko="바코 컴퍼니">Bako Company</span>
-            <input type="checkbox" id="menu-toggle" class="menu-toggle" />
-            <label for="menu-toggle" class="menu-icon" aria-label="Menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </label>
-            <nav class="nav-menu">
-                <a href="#" class="nav-link" data-en="Home" data-ko="홈">Home</a>
-                <a href="#more-content" class="nav-link" data-en="Gallery" data-ko="갤러리">Gallery</a>
-            </nav>
-            <div class="lang-switcher">
-                <button id="lang-btn" aria-label="Change language">🌐</button>
-                <ul id="lang-list" class="lang-list">
-                    <li data-lang="en">English</li>
-                    <li data-lang="ko">한국어</li>
-                </ul>
-            </div>
+            <span class="logo">Bako Company</span>
+            <span class="desc">الصفحة الرسمية لشركة باكو لزيوت المحركات</span>
         </div>
     </header>
-    <section class="hero">
-        <h1 class="animate" data-en="Hello World!" data-ko="헬로 월드!">Hello World!</h1>
-        <p class="lorem" data-en="Welcome to Bako Company! We provide the best car oils for all types of vehicles. Our products ensure maximum engine performance, long-lasting protection, and reliability you can trust. Discover why car owners choose us for quality and innovation in automotive lubrication."
-           data-ko="바코 컴퍼니에 오신 것을 환영합니다! 저희는 모든 차량에 최고의 엔진 오일을 제공합니다. 저희 제품은 최고의 엔진 성능, 오래가는 보호, 신뢰할 수 있는 품질을 보장합니다. 많은 운전자들이 저희를 선택하는 이유를 직접 경험해보세요!">Welcome to Bako Company! We provide the best car oils for all types of vehicles. Our products ensure maximum engine performance, long-lasting protection, and reliability you can trust. Discover why car owners choose us for quality and innovation in automotive lubrication.</p>
-        <button id="down-arrow" aria-label="Scroll down">
-            <span class="arrow">↓</span>
-        </button>
-    </section>
-    <section id="more-content">
-        <div class="slider">
-            <div class="slides">
-                <img src="Assets/img1.jpg" alt="Image 1" class="slide active">
-                <img src="Assets/img2.jpg" alt="Image 2" class="slide">
-                <img src="Assets/img3.jpg" alt="Image 3" class="slide">
-            </div>
-            <button class="slider-btn prev" aria-label="Previous">&#10094;</button>
-            <button class="slider-btn next" aria-label="Next">&#10095;</button>
-            <div class="slider-dots">
-                <span class="dot active"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-            </div>
-        </div>
-        <div class="lorem-more">
-            <p data-en="Bako Company is dedicated to delivering premium car oils that keep your engine running smoothly. Our advanced formulas are designed for both modern and classic cars, offering superior protection against wear and extreme temperatures."
-               data-ko="바코 컴퍼니는 엔진을 부드럽게 유지하는 프리미엄 오일을 제공합니다. 저희의 첨단 포뮬러는 최신 차량과 클래식 차량 모두에 적합하며, 마모와 극한 온도로부터 엔진을 보호합니다.">Bako Company is dedicated to delivering premium car oils that keep your engine running smoothly. Our advanced formulas are designed for both modern and classic cars, offering superior protection against wear and extreme temperatures.</p>
-            <p data-en="With years of experience and a passion for excellence, we are the trusted choice for drivers who demand the best for their vehicles. Experience the difference with Bako Company oils today!"
-               data-ko="수년간의 경험과 탁월함에 대한 열정으로, 저희는 최고의 품질을 원하는 운전자들의 신뢰받는 선택입니다. 바코 컴퍼니 오일의 차이를 직접 경험해보세요!">With years of experience and a passion for excellence, we are the trusted choice for drivers who demand the best for their vehicles. Experience the difference with Bako Company oils today!</p>
-        </div>
-    </section>
-    <script src="script.js"></script>
+    <main class="fade-in">
+        <h1 class="coming">Coming soon<br><span class="ar">قريباً</span></h1>
+    </main>
+    <footer class="footer">
+        <a href="https://www.facebook.com/share/19UewZc1VR/" target="_blank" class="fb-link" aria-label="Facebook">
+            <i class="fab fa-facebook fa-2x"></i>
+        </a>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelector('main').classList.add('visible');
+        });
+    </script>
 </body>
 </html>
