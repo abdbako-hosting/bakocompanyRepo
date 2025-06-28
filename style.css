@@ -1,11 +1,13 @@
 body {
-    background: #181c23;
-    color: #fff;
+    background: linear-gradient(135deg, #fff 60%, #f7f7fa 100%);
+    color: #232733;
     margin: 0;
     min-height: 100vh;
-    font-family: 'Cairo', 'Segoe UI', Arial, sans-serif;
+    font-family: 'Montserrat', 'Cairo', Arial, sans-serif;
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
 }
 .topbar {
     width: 100%;
@@ -28,6 +30,17 @@ body {
     font-size: 1.5rem;
     letter-spacing: 1px;
     color: #fed6e3;
+}
+.main-logo {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    margin-bottom: 8px;
+    filter: drop-shadow(0 2px 12px #fed6e3aa);
+    border-radius: 18px;
+    background: #fff;
+    padding: 6px;
+    box-shadow: 0 2px 12px #fed6e3aa;
 }
 .desc {
     font-size: 1rem;
@@ -63,18 +76,73 @@ main.visible {
     color: #fed6e3;
     font-family: 'Cairo', 'Segoe UI', Arial, sans-serif;
 }
+.soon-effect {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #fed6e3 0%, #fff0 70%);
+    position: absolute;
+    left: 50%;
+    top: 60%;
+    transform: translate(-50%, -50%);
+    opacity: 0.7;
+    filter: blur(18px);
+    z-index: 0;
+    animation: pulse 2.5s infinite alternate;
+}
+@keyframes pulse {
+    from { opacity: 0.7; transform: translate(-50%, -50%) scale(1); }
+    to { opacity: 0.3; transform: translate(-50%, -50%) scale(1.18); }
+}
+.coming, .coming .ar {
+    position: relative;
+    z-index: 2;
+}
 .footer {
     width: 100%;
     text-align: center;
-    padding: 24px 0 16px 0;
+    padding: 32px 0 20px 0;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    gap: 24px;
 }
 .fb-link {
-    color: #fff;
+    color: #1877f3;
     text-decoration: none;
-    transition: color 0.2s;
+    transition: color 0.2s, transform 0.2s;
+    margin: 0 8px;
 }
 .fb-link:hover {
-    color: #1877f3;
+    color: #0e4a8a;
+    transform: scale(1.15);
+}
+.ig-link {
+    color: #e1306c;
+    margin: 0 8px;
+    transition: color 0.2s, transform 0.2s;
+}
+.ig-link:hover {
+    color: #b9134f;
+    transform: scale(1.15);
+}
+.wa-link {
+    color: #25d366;
+    margin: 0 8px;
+    transition: color 0.2s, transform 0.2s;
+}
+.wa-link:hover {
+    color: #128c7e;
+    transform: scale(1.15);
+}
+.tg-link {
+    color: #229ed9;
+    margin: 0 8px;
+    transition: color 0.2s, transform 0.2s;
+}
+.tg-link:hover {
+    color: #176b8a;
+    transform: scale(1.15);
 }
 @media (max-width: 600px) {
     .coming {
