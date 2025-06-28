@@ -5,22 +5,34 @@
 body {
     margin: 0;
     font-family: 'Arial', sans-serif, 'Cairo', sans-serif; /* Fallback to Arial, then Cairo for Arabic */
-    /* Removed linear-gradient, using SVG image as background */
-    background-image: url('Assets/Background.png'); /* Set the SVG image as background */
+    background-image: url('Assets/Background.svg'); /* Set the SVG image as background */
     background-size: cover; /* Cover the entire viewport */
     background-position: center center; /* Center the background image */
     background-repeat: no-repeat; /* Do not repeat the background image */
     background-attachment: fixed; /* Keep background fixed while scrolling */
-    color: #e0e0e0; /* Light grey for text, good contrast */
+    color: #dbd9da; /* Updated general text color based on user request */
     display: flex;
     flex-direction: column;
     min-height: 100vh; /* Full viewport height */
-    position: relative; /* For background effects */
+    position: relative; /* For background effects and overlay */
+    overflow-x: hidden; /* VERY IMPORTANT: Prevent horizontal scrolling/excess on the right */
 }
 
-/* Background Animation - Optional, but adds to the "fakhama" */
-/* This will now layer on top of the SVG background, adding subtle texture */
+/* Background Overlay for darkening the image */
+/* This overlay will sit on top of the SVG background, making it darker */
 body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Dark semi-transparent overlay (70% opacity black) */
+    z-index: 0; /* Ensure it's above the background image but below other content */
+}
+
+/* Original Background Animation (cubes.png) - layering it above the new dark overlay for subtle texture */
+body::after { /* Changed from ::before to ::after to layer correctly with the new overlay */
     content: '';
     position: absolute;
     top: 0;
@@ -30,16 +42,16 @@ body::before {
     background: url('https://www.transparenttextures.com/patterns/cubes.png'); /* Subtle pattern for texture */
     opacity: 0.1; /* Very subtle */
     pointer-events: none;
-    z-index: -1; /* Ensure it's behind content but above the main background image */
+    z-index: 1; /* Above the dark overlay but below main content */
 }
 
 /* Header Styles */
 .topbar {
     background-color: rgba(0, 0, 0, 0.6); /* Slightly transparent dark background */
     padding: 15px 0;
-    border-bottom: 2px solid #0f3460; /* A subtle line for separation */
+    border-bottom: 2px solid #3d3b3c; /* Border color related to #dbd9da */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Soft shadow */
-    z-index: 100; /* Ensure it stays on top */
+    z-index: 100; /* Ensure it stays on top of overlays */
 }
 
 .topbar .container {
@@ -60,16 +72,16 @@ body::before {
 .logo {
     font-size: 2.2em;
     font-weight: bold;
-    color: #ffffff; /* Pure white for the main logo text */
+    color: #ffffff; /* Pure white for the main logo text for strong contrast */
     letter-spacing: 1px;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 .desc {
     font-size: 1.1em;
-    color: #bbbbbb;
+    color: #dbd9da; /* Description color based on theme */
     margin-left: 20px;
-    border-left: 1px solid #444;
+    border-left: 1px solid #5a575a; /* Border color related to #dbd9da */
     padding-left: 20px;
     font-family: 'Cairo', sans-serif; /* Apply Cairo specifically to description */
 }
@@ -88,7 +100,7 @@ main {
     transform: translateY(20px); /* Slight lift for fade-in effect */
     transition: opacity 1s ease-out, transform 1s ease-out;
     position: relative;
-    z-index: 1;
+    z-index: 10; /* Ensure main content is above overlays */
 }
 
 main.visible {
@@ -98,7 +110,7 @@ main.visible {
 
 .coming {
     font-size: 5em; /* Large and impactful */
-    color: #ffffff;
+    color: #ffffff; /* Keeping pure white for strong contrast on dark background */
     margin-bottom: 20px;
     text-shadow: 0 0 20px rgba(255, 255, 255, 0.7), 0 0 40px rgba(255, 255, 255, 0.5); /* Glowing text */
     letter-spacing: 3px;
@@ -109,7 +121,7 @@ main.visible {
 .coming .ar {
     display: block;
     font-size: 0.6em; /* Smaller for Arabic text */
-    color: #e0e0e0;
+    color: #dbd9da; /* Arabic text color based on theme */
     margin-top: 10px;
     font-weight: 700; /* Bolder weight for Cairo */
     font-family: 'Cairo', sans-serif; /* Apply Cairo specifically to Arabic text */
@@ -130,7 +142,7 @@ main.visible {
     border-radius: 50%;
     animation: floatEffect 8s infinite ease-in-out alternate;
     pointer-events: none;
-    z-index: 0;
+    z-index: 2; /* Ensure this effect is above the background and its dark overlay */
 }
 
 /* Positioning for the effect, adjust as needed */
@@ -168,22 +180,22 @@ main.visible {
     background-color: rgba(0, 0, 0, 0.5);
     padding: 20px; /* Default padding */
     text-align: center;
-    border-top: 2px solid #0f3460;
+    border-top: 2px solid #3d3b3c; /* Border color related to #dbd9da */
     box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.3);
-    z-index: 100;
+    z-index: 100; /* Ensure it stays on top of overlays */
     display: flex;
     justify-content: center;
     gap: 25px; /* Space between social icons */
 }
 
 .footer a {
-    color: #ffffff; /* White icons */
+    color: #dbd9da; /* Icon color based on theme */
     transition: color 0.3s ease, transform 0.3s ease;
     font-size: 2em; /* Increase icon size */
 }
 
 .footer a:hover {
-    color: #00bcd4; /* A vibrant blue on hover */
+    color: #ffffff; /* Lighter white on hover for contrast */
     transform: scale(1.2); /* Slightly enlarge on hover */
 }
 
