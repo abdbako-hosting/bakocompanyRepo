@@ -6,7 +6,7 @@ body {
     margin: 0;
     font-family: 'Arial', sans-serif, 'Cairo', sans-serif; /* Fallback to Arial, then Cairo for Arabic */
     /* Removed linear-gradient, using SVG image as background */
-    background-image: url('Assets/Background.svg'); /* Set the SVG image as background */
+    background-image: url('Assets/Background.png'); /* Set the SVG image as background */
     background-size: cover; /* Cover the entire viewport */
     background-position: center center; /* Center the background image */
     background-repeat: no-repeat; /* Do not repeat the background image */
