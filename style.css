@@ -1,0 +1,89 @@
+body {
+    font-family: 'Cairo', Arial, sans-serif;
+    margin: 0;
+    background: #f7f7fa;
+    color: #222;
+}
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    position: relative;
+    text-align: center;
+}
+.animate {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    animation: popIn 1s cubic-bezier(.68,-0.55,.27,1.55);
+}
+@keyframes popIn {
+    0% { transform: scale(0.7); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+.lorem {
+    font-size: 1.2rem;
+    color: #444;
+    margin-bottom: 2rem;
+    animation: fadeIn 2s;
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+#down-arrow {
+    background: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    cursor: pointer;
+    font-size: 2rem;
+    transition: background 0.2s;
+    margin-top: 2rem;
+}
+#down-arrow:hover {
+    background: #e0e0e0;
+}
+.arrow {
+    display: inline-block;
+    animation: bounce 1s infinite alternate;
+}
+@keyframes bounce {
+    from { transform: translateY(0); }
+    to { transform: translateY(10px); }
+}
+#more-content {
+    min-height: 60vh;
+    padding: 40px 0 60px 0;
+    background: #fff;
+    opacity: 0;
+    transition: opacity 0.7s;
+}
+#more-content.visible {
+    opacity: 1;
+}
+.images {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 2rem;
+}
+.images img {
+    width: 180px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    opacity: 0;
+}
+.lorem-more {
+    max-width: 600px;
+    margin: 0 auto;
+    color: #555;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
