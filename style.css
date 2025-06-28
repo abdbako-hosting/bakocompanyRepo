@@ -5,7 +5,12 @@
 body {
     margin: 0;
     font-family: 'Arial', sans-serif, 'Cairo', sans-serif; /* Fallback to Arial, then Cairo for Arabic */
-    background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460); /* Deep, rich gradient background */
+    /* Removed linear-gradient, using SVG image as background */
+    background-image: url('Assets/Background.svg'); /* Set the SVG image as background */
+    background-size: cover; /* Cover the entire viewport */
+    background-position: center center; /* Center the background image */
+    background-repeat: no-repeat; /* Do not repeat the background image */
+    background-attachment: fixed; /* Keep background fixed while scrolling */
     color: #e0e0e0; /* Light grey for text, good contrast */
     display: flex;
     flex-direction: column;
@@ -14,6 +19,7 @@ body {
 }
 
 /* Background Animation - Optional, but adds to the "fakhama" */
+/* This will now layer on top of the SVG background, adding subtle texture */
 body::before {
     content: '';
     position: absolute;
@@ -24,7 +30,7 @@ body::before {
     background: url('https://www.transparenttextures.com/patterns/cubes.png'); /* Subtle pattern for texture */
     opacity: 0.1; /* Very subtle */
     pointer-events: none;
-    z-index: -1;
+    z-index: -1; /* Ensure it's behind content but above the main background image */
 }
 
 /* Header Styles */
