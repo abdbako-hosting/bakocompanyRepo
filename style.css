@@ -1,6 +1,6 @@
 body {
-    background: linear-gradient(135deg, #fff 60%, #f7f7fa 100%);
-    color: #232733;
+    background: linear-gradient(135deg, #e3f0ff 60%, #1877f3 100%);
+    color: #102040;
     margin: 0;
     min-height: 100vh;
     font-family: 'Montserrat', 'Cairo', Arial, sans-serif;
@@ -11,13 +11,14 @@ body {
 }
 .topbar {
     width: 100%;
-    background: #232733;
+    background: rgba(24, 119, 243, 0.95);
     color: #fff;
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.13);
-    padding: 0.7rem 0;
+    box-shadow: 0 4px 24px rgba(24,119,243,0.18);
+    padding: 1.2rem 0 1rem 0;
+    backdrop-filter: blur(6px);
 }
 .topbar .container {
     display: flex;
@@ -26,25 +27,28 @@ body {
     gap: 4px;
 }
 .logo {
+    color: #fff;
+    text-shadow: 0 2px 16px #1877f366;
     font-weight: bold;
     font-size: 1.5rem;
     letter-spacing: 1px;
-    color: #fed6e3;
 }
 .main-logo {
     width: 70px;
     height: 70px;
     object-fit: contain;
     margin-bottom: 8px;
-    filter: drop-shadow(0 2px 12px #fed6e3aa);
+    background: #111c2e;
     border-radius: 18px;
-    background: #fff;
-    padding: 6px;
-    box-shadow: 0 2px 12px #fed6e3aa;
+    padding: 8px;
+    box-shadow: 0 2px 12px #1877f3aa;
+    filter: drop-shadow(0 2px 12px #1877f3aa);
+    display: block;
 }
 .desc {
+    color: #e3f0ff;
+    text-shadow: 0 1px 8px #1877f344;
     font-size: 1rem;
-    color: #bbb;
     font-family: inherit;
 }
 main {
@@ -80,7 +84,7 @@ main.visible {
     width: 180px;
     height: 180px;
     border-radius: 50%;
-    background: radial-gradient(circle, #fed6e3 0%, #fff0 70%);
+    background: radial-gradient(circle, #1877f3 0%, #fff0 70%);
     position: absolute;
     left: 50%;
     top: 60%;
@@ -118,12 +122,12 @@ main.visible {
     transform: scale(1.15);
 }
 .ig-link {
-    color: #e1306c;
+    color: #405de6;
     margin: 0 8px;
     transition: color 0.2s, transform 0.2s;
 }
 .ig-link:hover {
-    color: #b9134f;
+    color: #833ab4;
     transform: scale(1.15);
 }
 .wa-link {
