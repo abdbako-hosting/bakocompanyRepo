@@ -1,164 +1,237 @@
+/* General Body Styles */
 body {
-    background: linear-gradient(135deg, #e3f0ff 60%, #1877f3 100%);
-    color: #102040;
     margin: 0;
-    min-height: 100vh;
-    font-family: 'Montserrat', 'Cairo', Arial, sans-serif;
+    font-family: 'Arial', sans-serif; /* You can replace 'Arial' with a more elegant font from Google Fonts */
+    background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460); /* Deep, rich gradient background */
+    color: #e0e0e0; /* Light grey for text, good contrast */
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: stretch;
+    min-height: 100vh; /* Full viewport height */
+    overflow: hidden; /* Prevent scrollbars due to effects */
+    position: relative; /* For background effects */
 }
-.topbar {
-    width: 100%;
-    background: rgba(24, 119, 243, 0.95);
-    color: #fff;
-    position: sticky;
+
+/* Background Animation - Optional, but adds to the "fakhama" */
+body::before {
+    content: '';
+    position: absolute;
     top: 0;
-    z-index: 100;
-    box-shadow: 0 4px 24px rgba(24,119,243,0.18);
-    padding: 1.2rem 0 1rem 0;
-    backdrop-filter: blur(6px);
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://www.transparenttextures.com/patterns/cubes.png'); /* Subtle pattern for texture */
+    opacity: 0.1; /* Very subtle */
+    pointer-events: none;
+    z-index: -1;
 }
+
+/* Header Styles */
+.topbar {
+    background-color: rgba(0, 0, 0, 0.6); /* Slightly transparent dark background */
+    padding: 15px 0;
+    border-bottom: 2px solid #0f3460; /* A subtle line for separation */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Soft shadow */
+    z-index: 100; /* Ensure it stays on top */
+}
+
 .topbar .container {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    gap: 4px;
+    justify-content: center; /* Center content in the header */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
-.logo {
-    color: #fff;
-    text-shadow: 0 2px 16px #1877f366;
-    font-weight: bold;
-    font-size: 1.5rem;
-    letter-spacing: 1px;
-}
+
 .main-logo {
-    width: 70px;
-    height: 70px;
-    object-fit: contain;
-    margin-bottom: 8px;
-    background: #111c2e;
-    border-radius: 18px;
-    padding: 8px;
-    box-shadow: 0 2px 12px #1877f3aa;
-    filter: drop-shadow(0 2px 12px #1877f3aa);
-    display: block;
+    height: 60px; /* Adjust as needed */
+    margin-right: 15px;
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3)); /* Glow effect for the logo */
 }
+
+.logo {
+    font-size: 2.2em;
+    font-weight: bold;
+    color: #ffffff; /* Pure white for the main logo text */
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
 .desc {
-    color: #e3f0ff;
-    text-shadow: 0 1px 8px #1877f344;
-    font-size: 1rem;
-    font-family: inherit;
+    font-size: 1.1em;
+    color: #bbbbbb;
+    margin-left: 20px;
+    border-left: 1px solid #444;
+    padding-left: 20px;
 }
+
+/* Main Content - Coming Soon Section */
 main {
-    flex: 1;
+    flex-grow: 1; /* Allows main content to take available space */
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    min-height: 60vh;
-    opacity: 0;
-    transition: opacity 1.2s cubic-bezier(.68,-0.55,.27,1.55);
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    opacity: 0; /* Hidden initially for fade-in effect */
+    transform: translateY(20px); /* Slight lift for fade-in effect */
+    transition: opacity 1s ease-out, transform 1s ease-out;
+    position: relative;
+    z-index: 1;
 }
+
 main.visible {
     opacity: 1;
+    transform: translateY(0);
 }
+
 .coming {
-    font-size: 2.5rem;
-    font-weight: 700;
-    text-align: center;
-    margin: 0;
-    letter-spacing: 1px;
-    font-family: 'Cairo', 'Segoe UI', Arial, sans-serif;
+    font-size: 5em; /* Large and impactful */
+    color: #ffffff;
+    margin-bottom: 20px;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.7), 0 0 40px rgba(255, 255, 255, 0.5); /* Glowing text */
+    letter-spacing: 3px;
+    font-weight: 900; /* Extra bold */
+    animation: pulse 2s infinite alternate; /* Subtle pulse animation */
 }
+
 .coming .ar {
     display: block;
-    font-size: 2rem;
-    font-weight: 400;
-    margin-top: 0.5rem;
-    color: #fed6e3;
-    font-family: 'Cairo', 'Segoe UI', Arial, sans-serif;
+    font-size: 0.6em; /* Smaller for Arabic text */
+    color: #e0e0e0;
+    margin-top: 10px;
+    font-weight: 500;
 }
-.soon-effect {
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    background: radial-gradient(circle, #1877f3 0%, #fff0 70%);
-    position: absolute;
-    left: 50%;
-    top: 60%;
-    transform: translate(-50%, -50%);
-    opacity: 0.7;
-    filter: blur(18px);
-    z-index: 0;
-    animation: pulse 2.5s infinite alternate;
-}
+
+/* Pulse Animation for Coming Soon text */
 @keyframes pulse {
-    from { opacity: 0.7; transform: translate(-50%, -50%) scale(1); }
-    to { opacity: 0.3; transform: translate(-50%, -50%) scale(1.18); }
+    0% { transform: scale(1); }
+    100% { transform: scale(1.02); }
 }
-.coming, .coming .ar {
-    position: relative;
-    z-index: 2;
+
+/* Soon Effect - A subtle, elegant background animation */
+.soon-effect {
+    position: absolute;
+    width: 250px; /* Size of the effect */
+    height: 250px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+    border-radius: 50%;
+    animation: floatEffect 8s infinite ease-in-out alternate;
+    pointer-events: none;
+    z-index: 0;
 }
+
+/* Positioning for the effect, adjust as needed */
+.soon-effect:nth-child(1) {
+    top: 20%;
+    left: 15%;
+    animation-delay: 0s;
+}
+
+.soon-effect:nth-child(2) {
+    bottom: 25%;
+    right: 10%;
+    animation-delay: 2s;
+    width: 200px;
+    height: 200px;
+}
+
+.soon-effect:nth-child(3) {
+    top: 50%;
+    left: 45%;
+    animation-delay: 4s;
+    width: 300px;
+    height: 300px;
+}
+
+@keyframes floatEffect {
+    0% { transform: translate(0, 0) scale(1); opacity: 0.2; }
+    50% { transform: translate(20px, 30px) scale(1.05); opacity: 0.3; }
+    100% { transform: translate(0, 0) scale(1); opacity: 0.2; }
+}
+
+
+/* Footer Styles */
 .footer {
-    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
     text-align: center;
-    padding: 32px 0 20px 0;
-    background: transparent;
+    border-top: 2px solid #0f3460;
+    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.3);
+    z-index: 100;
     display: flex;
     justify-content: center;
-    gap: 24px;
+    gap: 25px; /* Space between social icons */
 }
-.fb-link {
-    color: #1877f3;
-    text-decoration: none;
-    transition: color 0.2s, transform 0.2s;
-    margin: 0 8px;
+
+.footer a {
+    color: #ffffff; /* White icons */
+    transition: color 0.3s ease, transform 0.3s ease;
+    font-size: 2em; /* Increase icon size */
 }
-.fb-link:hover {
-    color: #0e4a8a;
-    transform: scale(1.15);
+
+.footer a:hover {
+    color: #00bcd4; /* A vibrant blue on hover */
+    transform: scale(1.2); /* Slightly enlarge on hover */
 }
-.ig-link {
-    color: #405de6;
-    margin: 0 8px;
-    transition: color 0.2s, transform 0.2s;
-}
-.ig-link:hover {
-    color: #833ab4;
-    transform: scale(1.15);
-}
-.wa-link {
-    color: #25d366;
-    margin: 0 8px;
-    transition: color 0.2s, transform 0.2s;
-}
-.wa-link:hover {
-    color: #128c7e;
-    transform: scale(1.15);
-}
-.tg-link {
-    color: #229ed9;
-    margin: 0 8px;
-    transition: color 0.2s, transform 0.2s;
-}
-.tg-link:hover {
-    color: #176b8a;
-    transform: scale(1.15);
-}
-@media (max-width: 600px) {
-    .coming {
-        font-size: 1.5rem;
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .topbar .container {
+        flex-direction: column;
+        text-align: center;
     }
+
+    .main-logo {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .logo {
+        font-size: 1.8em;
+    }
+
+    .desc {
+        margin-left: 0;
+        padding-left: 0;
+        border-left: none;
+        margin-top: 5px;
+        font-size: 0.9em;
+    }
+
+    .coming {
+        font-size: 3em;
+    }
+
     .coming .ar {
-        font-size: 1.1rem;
+        font-size: 0.5em;
+    }
+
+    .footer {
+        flex-wrap: wrap; /* Allow icons to wrap on smaller screens */
+        gap: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .coming {
+        font-size: 2.2em;
+    }
+
+    .coming .ar {
+        font-size: 0.4em;
+    }
+    .main-logo {
+        height: 50px;
     }
     .logo {
-        font-size: 1.1rem;
+        font-size: 1.5em;
     }
     .desc {
-        font-size: 0.9rem;
+        font-size: 0.8em;
+    }
+    .footer a {
+        font-size: 1.5em;
     }
 }
