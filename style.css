@@ -10,7 +10,6 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh; /* Full viewport height */
-    /* overflow: hidden; */ /* REMOVED to allow scrolling */
     position: relative; /* For background effects */
 }
 
@@ -47,7 +46,7 @@ body::before {
 }
 
 .main-logo {
-    height: 60px; /* Adjust as needed */
+    height: 80px; /* Increased logo size */
     margin-right: 15px;
     filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3)); /* Glow effect for the logo */
 }
@@ -161,7 +160,7 @@ main.visible {
 /* Footer Styles */
 .footer {
     background-color: rgba(0, 0, 0, 0.5);
-    padding: 20px;
+    padding: 20px; /* Default padding */
     text-align: center;
     border-top: 2px solid #0f3460;
     box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.3);
@@ -190,6 +189,7 @@ main.visible {
     }
 
     .main-logo {
+        height: 70px; /* Adjusted for smaller screens */
         margin-right: 0;
         margin-bottom: 10px;
     }
@@ -216,7 +216,13 @@ main.visible {
 
     .footer {
         flex-wrap: wrap; /* Allow icons to wrap on smaller screens */
-        gap: 15px;
+        gap: 15px; /* Reduced gap for smaller screens */
+        padding: 20px 10px; /* Added horizontal padding to footer */
+        justify-content: center; /* Ensure icons are centered when wrapped */
+    }
+
+    .footer a {
+        padding: 5px; /* Added small padding to each icon for better touch target */
     }
 }
 
@@ -229,7 +235,7 @@ main.visible {
         font-size: 0.4em;
     }
     .main-logo {
-        height: 50px;
+        height: 60px; /* Adjusted for smallest screens */
     }
     .logo {
         font-size: 1.5em;
@@ -238,6 +244,11 @@ main.visible {
         font-size: 0.8em;
     }
     .footer a {
-        font-size: 1.5em;
+        font-size: 1.5em; /* Slightly smaller icon size for very small screens */
+        padding: 5px; /* Ensure padding is maintained */
+    }
+    .footer {
+        gap: 10px; /* Further reduced gap for very small screens */
     }
 }
+
