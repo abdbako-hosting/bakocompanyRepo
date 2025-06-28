@@ -1,25 +1,30 @@
 /* Import Google Font for Arabic text */
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap');
 
+/* Universal Box-Sizing for better responsive layout and preventing overflow */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 /* General Body Styles */
 body {
     margin: 0;
     font-family: 'Arial', sans-serif, 'Cairo', sans-serif; /* Fallback to Arial, then Cairo for Arabic */
-    background-image: url('Assets/Background.png'); /* Set the SVG image as background */
+    background-image: url('Assets/Background.png'); /* Updated to PNG image */
     background-size: cover; /* Cover the entire viewport */
     background-position: center center; /* Center the background image */
     background-repeat: no-repeat; /* Do not repeat the background image */
     background-attachment: fixed; /* Keep background fixed while scrolling */
-    color: #dbd9da; /* Updated general text color based on user request */
+    color: #dbd9da; /* General text color based on user request */
     display: flex;
     flex-direction: column;
     min-height: 100vh; /* Full viewport height */
     position: relative; /* For background effects and overlay */
-    overflow-x: hidden; /* VERY IMPORTANT: Prevent horizontal scrolling/excess on the right */
+    overflow-x: hidden; /* CRITICAL: Prevent horizontal scrolling */
+    width: 100vw; /* Ensure body occupies exactly 100% of viewport width */
 }
 
 /* Background Overlay for darkening the image */
-/* This overlay will sit on top of the SVG background, making it darker */
 body::before {
     content: '';
     position: absolute;
@@ -27,12 +32,12 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7); /* Dark semi-transparent overlay (70% opacity black) */
+    background-color: rgba(0, 0, 0, 0.75); /* Dark semi-transparent overlay (75% opacity black) for more contrast */
     z-index: 0; /* Ensure it's above the background image but below other content */
 }
 
 /* Original Background Animation (cubes.png) - layering it above the new dark overlay for subtle texture */
-body::after { /* Changed from ::before to ::after to layer correctly with the new overlay */
+body::after {
     content: '';
     position: absolute;
     top: 0;
@@ -45,11 +50,18 @@ body::after { /* Changed from ::before to ::after to layer correctly with the ne
     z-index: 1; /* Above the dark overlay but below main content */
 }
 
+/* Responsive Images - Crucial for preventing overflow */
+img {
+    max-width: 100%; /* Ensure images don't exceed their container width */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Remove extra space below images */
+}
+
 /* Header Styles */
 .topbar {
     background-color: rgba(0, 0, 0, 0.6); /* Slightly transparent dark background */
     padding: 15px 0;
-    border-bottom: 2px solid #3d3b3c; /* Border color related to #dbd9da */
+    border-bottom: 2px solid rgba(219, 217, 218, 0.2); /* Border color based on #dbd9da with transparency */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Soft shadow */
     z-index: 100; /* Ensure it stays on top of overlays */
 }
@@ -61,6 +73,8 @@ body::after { /* Changed from ::before to ::after to layer correctly with the ne
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    /* Ensure no specific width breaks layout on small screens */
+    width: 100%;
 }
 
 .main-logo {
@@ -81,7 +95,7 @@ body::after { /* Changed from ::before to ::after to layer correctly with the ne
     font-size: 1.1em;
     color: #dbd9da; /* Description color based on theme */
     margin-left: 20px;
-    border-left: 1px solid #5a575a; /* Border color related to #dbd9da */
+    border-left: 1px solid rgba(219, 217, 218, 0.1); /* Border color based on #dbd9da with transparency */
     padding-left: 20px;
     font-family: 'Cairo', sans-serif; /* Apply Cairo specifically to description */
 }
@@ -101,6 +115,7 @@ main {
     transition: opacity 1s ease-out, transform 1s ease-out;
     position: relative;
     z-index: 10; /* Ensure main content is above overlays */
+    width: 100%; /* Ensure main content occupies 100% of available width */
 }
 
 main.visible {
@@ -146,6 +161,7 @@ main.visible {
 }
 
 /* Positioning for the effect, adjust as needed */
+/* Ensure these don't push content out by being too large or too far off-screen */
 .soon-effect:nth-child(1) {
     top: 20%;
     left: 15%;
@@ -180,7 +196,7 @@ main.visible {
     background-color: rgba(0, 0, 0, 0.5);
     padding: 20px; /* Default padding */
     text-align: center;
-    border-top: 2px solid #3d3b3c; /* Border color related to #dbd9da */
+    border-top: 2px solid rgba(219, 217, 218, 0.2); /* Border color based on #dbd9da with transparency */
     box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.3);
     z-index: 100; /* Ensure it stays on top of overlays */
     display: flex;
