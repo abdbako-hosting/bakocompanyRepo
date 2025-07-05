@@ -1,288 +1,116 @@
-/* Import Google Font for Arabic text */
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap');
-
-/* Universal Box-Sizing for better responsive layout and preventing overflow */
-*, *::before, *::after {
-    box-sizing: border-box;
+/* Custom Styles - New Theme */
+:root {
+  --feather-color: #359fb7;
+  --olive-color: #8f853e;
+  --black-color: #61646b;
+  --red-color: #c0414a;
 }
 
-/* General Body Styles */
 body {
-    margin: 0;
-    font-family: 'Arial', sans-serif, 'Cairo', sans-serif; /* Fallback to Arial, then Cairo for Arabic */
-    background-image: url('Assets/Background.png'); /* Updated to PNG image */
-    background-size: cover; /* Cover the entire viewport */
-    background-position: center center; /* Center the background image */
-    background-repeat: no-repeat; /* Do not repeat the background image */
-    background-attachment: fixed; /* Keep background fixed while scrolling */
-    color: #dbd9da; /* General text color based on user request */
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; /* Full viewport height */
-    position: relative; /* For background effects and overlay */
-    overflow-x: hidden; /* CRITICAL: Prevent horizontal scrolling */
-    width: 100vw; /* Ensure body occupies exactly 100% of viewport width */
+    padding-top: 70px; /* Adjust this value based on header height */
 }
 
-/* Background Overlay for darkening the image */
-body::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.75); /* Dark semi-transparent overlay (75% opacity black) for more contrast */
-    z-index: 0; /* Ensure it's above the background image but below other content */
+.hero-gradient {
+  background: linear-gradient(
+    135deg,
+    var(--feather-color) 0%,   /* Feather */
+    var(--olive-color) 50%,  /* Olive */
+    var(--black-color) 100%  /* Black */
+  );
+}
+.product-card:hover .product-overlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+.product-overlay {
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+}
+.language-dropdown {
+  pointer-events: none;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform-origin: top;
+  opacity: 0;
+  transform: scaleY(0.95);
+}
+.group:hover .language-dropdown {
+  pointer-events: auto;
+  opacity: 1;
+  transform: scaleY(1);
+}
+.nav-link {
+  position: relative;
+}
+.nav-link:after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: var(--red-color); /* Red */
+  transition: width 0.3s ease;
+}
+.nav-link:hover:after {
+  width: 100%;
 }
 
-/* Original Background Animation (cubes.png) - layering it above the new dark overlay for subtle texture */
-body::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('https://www.transparenttextures.com/patterns/cubes.png'); /* Subtle pattern for texture */
-    opacity: 0.1; /* Very subtle */
-    pointer-events: none;
-    z-index: 1; /* Above the dark overlay but below main content */
+html {
+  scroll-behavior: smooth;
 }
 
-/* Responsive Images - Crucial for preventing overflow */
-img {
-    max-width: 100%; /* Ensure images don't exceed their container width */
-    height: auto; /* Maintain aspect ratio */
-    display: block; /* Remove extra space below images */
-}
-
-/* Header Styles */
-.topbar {
-    background-color: rgba(0, 0, 0, 0.6); /* Slightly transparent dark background */
-    padding: 15px 0;
-    border-bottom: 2px solid rgba(219, 217, 218, 0.2); /* Border color based on #dbd9da with transparency */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Soft shadow */
-    z-index: 100; /* Ensure it stays on top of overlays */
-}
-
-.topbar .container {
-    display: flex;
-    align-items: center;
-    justify-content: center; /* Center content in the header */
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-    /* Ensure no specific width breaks layout on small screens */
-    width: 100%;
-}
-
-.main-logo {
-    height: 80px; /* Increased logo size */
-    margin-right: 15px;
-    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3)); /* Glow effect for the logo */
-}
-
-.logo {
-    font-size: 2.2em;
-    font-weight: bold;
-    color: #ffffff; /* Pure white for the main logo text for strong contrast */
-    letter-spacing: 1px;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-}
-
-.desc {
-    font-size: 1.1em;
-    color: #dbd9da; /* Description color based on theme */
-    margin-left: 20px;
-    border-left: 1px solid rgba(219, 217, 218, 0.1); /* Border color based on #dbd9da with transparency */
-    padding-left: 20px;
-    font-family: 'Cairo', sans-serif; /* Apply Cairo specifically to description */
-}
-
-/* Main Content - Coming Soon Section */
-main {
-    flex-grow: 1; /* Allows main content to take available space */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
-    padding-bottom: 50px; /* Added padding to allow slight scroll */
-    opacity: 0; /* Hidden initially for fade-in effect */
-    transform: translateY(20px); /* Slight lift for fade-in effect */
-    transition: opacity 1s ease-out, transform 1s ease-out;
-    position: relative;
-    z-index: 10; /* Ensure main content is above overlays */
-    width: 100%; /* Ensure main content occupies 100% of available width */
-}
-
-main.visible {
+/* Modal Animation */
+@keyframes scale-in {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
     opacity: 1;
-    transform: translateY(0);
+  }
 }
 
-.coming {
-    font-size: 5em; /* Large and impactful */
-    color: #ffffff; /* Keeping pure white for strong contrast on dark background */
-    margin-bottom: 20px;
-    text-shadow: 0 0 20px rgba(255, 255, 255, 0.7), 0 0 40px rgba(255, 255, 255, 0.5); /* Glowing text */
-    letter-spacing: 3px;
-    font-weight: 900; /* Extra bold */
-    animation: pulse 2s infinite alternate; /* Subtle pulse animation */
+@keyframes scale-out {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(0.9);
+    opacity: 0;
+  }
 }
 
-.coming .ar {
-    display: block;
-    font-size: 0.6em; /* Smaller for Arabic text */
-    color: #dbd9da; /* Arabic text color based on theme */
-    margin-top: 10px;
-    font-weight: 700; /* Bolder weight for Cairo */
-    font-family: 'Cairo', sans-serif; /* Apply Cairo specifically to Arabic text */
+.animate-scale-in {
+  animation: scale-in 0.3s ease-out forwards;
 }
 
-/* Pulse Animation for Coming Soon text */
-@keyframes pulse {
-    0% { transform: scale(1); }
-    100% { transform: scale(1.02); }
+.animate-scale-out {
+  animation: scale-out 0.3s ease-in forwards;
 }
 
-/* Soon Effect - A subtle, elegant background animation */
-.soon-effect {
-    position: absolute;
-    width: 250px; /* Size of the effect */
-    height: 250px;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
-    border-radius: 50%;
-    animation: floatEffect 8s infinite ease-in-out alternate;
-    pointer-events: none;
-    z-index: 2; /* Ensure this effect is above the background and its dark overlay */
+/* Mobile Menu Body Shift */
+body.mobile-menu-open #main-content,
+body.mobile-menu-open #footer-placeholder {
+  transition: transform 0.4s ease-in-out;
+  transform: translateY(20px); /* Reduced shift for less page displacement */
 }
 
-/* Positioning for the effect, adjust as needed */
-/* Ensure these don't push content out by being too large or too far off-screen */
-.soon-effect:nth-child(1) {
-    top: 20%;
-    left: 15%;
-    animation-delay: 0s;
-}
-
-.soon-effect:nth-child(2) {
-    bottom: 25%;
-    right: 10%;
-    animation-delay: 2s;
-    width: 200px;
-    height: 200px;
-}
-
-.soon-effect:nth-child(3) {
-    top: 50%;
-    left: 45%;
-    animation-delay: 4s;
-    width: 300px;
-    height: 300px;
-}
-
-@keyframes floatEffect {
-    0% { transform: translate(0, 0) scale(1); opacity: 0.2; }
-    50% { transform: translate(20px, 30px) scale(1.05); opacity: 0.3; }
-    100% { transform: translate(0, 0) scale(1); opacity: 0.2; }
+#main-content,
+#footer-placeholder {
+  transition: transform 0.4s ease-in-out;
 }
 
 
-/* Footer Styles */
-.footer {
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 20px; /* Default padding */
-    text-align: center;
-    border-top: 2px solid rgba(219, 217, 218, 0.2); /* Border color based on #dbd9da with transparency */
-    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.3);
-    z-index: 100; /* Ensure it stays on top of overlays */
-    display: flex;
-    justify-content: center;
-    gap: 25px; /* Space between social icons */
+.award-bg {
+  background-size: cover;
+  background-position: center;
 }
 
-.footer a {
-    color: #dbd9da; /* Icon color based on theme */
-    transition: color 0.3s ease, transform 0.3s ease;
-    font-size: 2em; /* Increase icon size */
-}
-
-.footer a:hover {
-    color: #ffffff; /* Lighter white on hover for contrast */
-    transform: scale(1.2); /* Slightly enlarge on hover */
-}
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-    .topbar .container {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .main-logo {
-        height: 70px; /* Adjusted for smaller screens */
-        margin-right: 0;
-        margin-bottom: 10px;
-    }
-
-    .logo {
-        font-size: 1.8em;
-    }
-
-    .desc {
-        margin-left: 0;
-        padding-left: 0;
-        border-left: none;
-        margin-top: 5px;
-        font-size: 0.9em;
-    }
-
-    .coming {
-        font-size: 3em;
-    }
-
-    .coming .ar {
-        font-size: 0.5em;
-    }
-
-    .footer {
-        flex-wrap: wrap; /* Allow icons to wrap on smaller screens */
-        gap: 15px; /* Reduced gap for smaller screens */
-        padding: 20px 10px; /* Added horizontal padding to footer */
-        justify-content: center; /* Ensure icons are centered when wrapped */
-    }
-
-    .footer a {
-        padding: 5px; /* Added small padding to each icon for better touch target */
-    }
-}
-
-@media (max-width: 480px) {
-    .coming {
-        font-size: 2.2em;
-    }
-
-    .coming .ar {
-        font-size: 0.4em;
-    }
-    .main-logo {
-        height: 60px; /* Adjusted for smallest screens */
-    }
-    .logo {
-        font-size: 1.5em;
-    }
-    .desc {
-        font-size: 0.8em;
-    }
-    .footer a {
-        font-size: 1.5em; /* Slightly smaller icon size for very small screens */
-        padding: 5px; /* Ensure padding is maintained */
-    }
-    .footer {
-        gap: 10px; /* Further reduced gap for very small screens */
-    }
+.award-bg:hover {
+  background-position: center 50%;
+  transition: background-position 0.5s ease-in-out;
 }
 
